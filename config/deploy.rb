@@ -11,7 +11,7 @@ load "config/recipes/check"
 
 set :application, "blog"
 set :use_sudo, false
-set :rvm_type, :system
+
 set :rvm_ruby_string, "ruby-1.9.3-p0@blog"
 
 set :scm, "git"
@@ -25,6 +25,7 @@ ssh_options[:forward_agent] = true
 task :production do
   server "172.16.194.128", :web, :app, :db, primary: true
   set :user, "eightynine"
+  set :rvm_type, :system
   set :deploy_to, "/var/www/apps/#{application}/"
   set :deploy_via, :remote_cache
   set :branch, "production"
@@ -34,6 +35,7 @@ end
 task :staging do
   server "192.168.1.42", :web, :app, :db, primary: true
   set :user, "senddinero"
+  set :rvm_type, :user
   set :deploy_to, "/var/www/apps/#{application}/"
   set :deploy_via, :copy
   set :branch, "staging" 
