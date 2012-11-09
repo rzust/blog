@@ -15,6 +15,8 @@ set :application, "blog"
 set :deploy_to, "/var/www/apps/#{application}"
 set :deploy_via, :remote_cache
 set :use_sudo, false
+set :rvm_type, :system
+set :rvm_ruby_string, "ruby-1.9.3-p0@blog"
 
 set :scm, "git"
 set :repository, "git@github.com:rzust/#{application}.git"
