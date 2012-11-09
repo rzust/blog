@@ -1,6 +1,6 @@
 set_default(:postgresql_host, "localhost")
-set_default(:postgresql_user) { application }
-set_default(:postgresql_password) { Capistrano::CLI.password_prompt "PostgreSQL Password: " }
+set_default(:postgresql_user) { "root" }
+set_default(:postgresql_password) { Capistrano::CLI.password_prompt "MySQL Password: " }
 set_default(:postgresql_database) { "#{application}_production" }
 
 namespace :postgresql do
@@ -24,7 +24,7 @@ namespace :postgresql do
     run "mkdir -p #{shared_path}/config"
     template "postgresql.yml.erb", "#{shared_path}/config/database.yml"
   end
-  #after "deploy:setup", "postgresql:setup"
+  after "deploy:setup", "postgresql:setup"
 
   desc "Symlink the database.yml file into latest release"
   task :symlink, roles: :app do
