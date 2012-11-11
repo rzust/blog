@@ -35,7 +35,7 @@ end
 task :staging do
   server "stage.sdhub.net", :web, :app, :db, primary: true
   set :user, "deploy"
-  set :rvm_type, :user
+  set :rvm_type, :system
   set :deploy_to, "/home/#{user}/sites/#{application}/"
   set :deploy_via, :copy
   set :branch, "staging" 
