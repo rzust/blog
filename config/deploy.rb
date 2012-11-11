@@ -33,10 +33,10 @@ task :production do
 end
 
 task :staging do
-  server "192.168.1.42", :web, :app, :db, primary: true
-  set :user, "senddinero"
+  server "stage.sdhub.net", :web, :app, :db, primary: true
+  set :user, "deploy"
   set :rvm_type, :user
-  set :deploy_to, "/var/www/apps/#{application}/"
+  set :deploy_to, "/home/#{user}/sites/#{application}/"
   set :deploy_via, :copy
   set :branch, "staging" 
   after('deploy:symlink', 'cruise_control:build')
