@@ -36,10 +36,10 @@ task :staging do
   server "stage.sdhub.net", :web, :app, :db, primary: true
   set :user, "deploy"
   set :rvm_type, :system
-  set :deploy_to, "/home/#{user}/sites/#{application}/"
-  set :deploy_via, :copy
+  set :deploy_to, "/var/www/apps/#{application}/"
+  set :deploy_via, :remote_cache
   set :branch, "staging" 
-  after('deploy:symlink', 'cruise_control:build')
+  after('deploy:symlink', 'cache:clear')
 end
 
 
