@@ -1,7 +1,7 @@
 set_default(:mysql_host, "localhost")
 set(:mysql_user, Capistrano::CLI.ui.ask("User name: ") )
 set_default(:mysql_password) { Capistrano::CLI.password_prompt "MySQL Password: " }
-set_default(:mysql_database) { "#{application}_production" }
+set_default(:mysql_database) { "#{application}_#{enviroment}" }
 
 namespace :postgresql do
   desc "Install the latest stable release of PostgreSQL."

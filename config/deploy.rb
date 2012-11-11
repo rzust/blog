@@ -35,6 +35,7 @@ end
 task :staging do
   server "stage.sdhub.net", :web, :app, :db, primary: true
   set :user, "deploy"
+  set :enviroment, "test"
   set :rvm_type, :system
   set :deploy_to, "/var/www/apps/#{application}/"
   set :deploy_via, :remote_cache
